@@ -7,8 +7,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDaoJDBCImpl extends Util implements UserDao {
-    Connection connection = getConnection();
+public class UserDaoJDBCImpl  implements UserDao {
+    private Connection connection = new Util().getConnection();
 
     public UserDaoJDBCImpl() {
 
@@ -126,6 +126,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             statement.executeUpdate(sql);
             connection.commit();
             connection.setAutoCommit(true);
+
         } catch (SQLException throwables) {
             try {
                 connection.rollback();
